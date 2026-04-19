@@ -9,16 +9,28 @@ public class Crowd : MonoBehaviour
     public GameObject Target;
     public GameObject[] AllTargets;
 
-    // Start is called before the first frame update
+    private Animator animator;
+
     void Start()
     {
-        GetComponent<Animator>().SetInteger("Mode", 1);
+        animator = GetComponent<Animator>();
+        if (animator != null)
+            animator.SetInteger("Mode", 1);
         FindeTarget();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Mettre à jour l'animation selon la vitesse
+        if (animator != null)
+        {
+            if (navMeshAgent.velocity.magnitude > 0.1f)
+                animator.SetInteger("Mode", 1); // Walk
+            else
+                animator.SetInteger("Mode", 0); // Idle
+        }
+
+        // Chercher nouvelle cible quand arrivé
         if (Target != null)
         {
             if (Vector3.Distance(this.transform.position, Target.transform.position) <= 0.5f)
