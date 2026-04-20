@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(cs|unity|prefab\\)$\")",
+      "mcp__unity-mcp__Unity_RunCommand"
+    ]
+  }
+}
