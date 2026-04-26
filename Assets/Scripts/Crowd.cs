@@ -1,119 +1,158 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Crowd : MonoBehaviour
 {
+    public enum CrowdMode { Transit, TowardDestination }
+
+    [Header("Mode")]
+    public CrowdMode mode = CrowdMode.Transit;
+
     [Header("Navigation")]
     public NavMeshAgent navMeshAgent;
 
-    [Header("Waypoints")]
-    [Tooltip("Assigne manuellement les waypoints ici, OU laisse vide pour utiliser le tag 'Target'")]
+    [Header("Waypoints (Transit)")]
     public Transform[] waypoints;
 
-    [Header("Behaviour")]
-    [Tooltip("Temps d'attente min/max à chaque waypoint avant de repartir")]
-    public float waitTimeMin = 0.5f;
-    public float waitTimeMax = 2.5f;
+    [Header("Destination (TowardDestination)")]
+    public Transform destination;
 
-    [Tooltip("Distance à laquelle on considère le PNJ arrivé")]
+    [Header("Comportement")]
+    public float waitTimeMin     = 0.5f;
+    public float waitTimeMax     = 2.0f;
     public float arrivalDistance = 0.8f;
+    public float moveSpeed       = 1.4f;
 
-    private Animator animator;
+    [HideInInspector] public CrowdSpawner spawner;
+
+    private Animator  animator;
     private Transform currentTarget;
-    private bool isWaiting = false;
+    private bool      isWaiting  = false;
+    private bool      hasArrived = false;
+    private bool      isReady    = false;
 
-    // -------------------------------------------------------
-    void Start()
+    public void Init()
     {
-        animator = GetComponent<Animator>();
-        SetAnimationMode(1); // Walk par défaut
+        isWaiting  = false;
+        hasArrived = false;
+        isReady    = true;
 
-        // Si aucun waypoint assigné manuellement, on cherche par tag
-        if (waypoints == null || waypoints.Length == 0)
-            RefreshWaypointsFromTag();
-
-        if (waypoints != null && waypoints.Length > 0)
-            GoToRandomWaypoint();
-        else
-            Debug.LogWarning($"[Crowd] {gameObject.name} : aucun waypoint trouvé !");
-    }
-
-    // -------------------------------------------------------
-    void Update()
-    {
-        if (isWaiting || currentTarget == null) return;
-
-        // Arrivé à destination ?
-        if (!navMeshAgent.pathPending &&
-            navMeshAgent.remainingDistance <= arrivalDistance)
+        // Cherche l'Animator sur l'enfant qui a le vrai squelette/mesh
+        // On cherche dans les enfants en IGNORANT le root lui-même
+        animator = null;
+        foreach (Animator a in GetComponentsInChildren<Animator>(true))
         {
-            StartCoroutine(WaitThenMove());
+            // Prend le premier Animator qui a un controller assigné
+            if (a.runtimeAnimatorController != null)
+            {
+                animator = a;
+                break;
+            }
         }
 
-        // Synchronise l'animation avec la vitesse réelle
-        bool isMoving = navMeshAgent.velocity.magnitude > 0.1f;
-        SetAnimationMode(isMoving ? 1 : 0);
+        if (animator == null)
+            Debug.LogWarning($"[Crowd] {name} : aucun Animator avec controller trouvé !");
+        else
+            Debug.Log($"[Crowd] {name} : Animator trouvé sur '{animator.gameObject.name}' controller='{animator.runtimeAnimatorController.name}'");
+
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.enabled   = true;
+            navMeshAgent.isStopped = false;
+            navMeshAgent.speed     = moveSpeed;
+        }
+
+        SetMode(1);
+        StartNavigation();
     }
 
-    // -------------------------------------------------------
-    /// <summary>
-    /// Attend un peu puis choisit un nouveau waypoint aléatoire (différent de l'actuel).
-    /// </summary>
+    void OnEnable()  { }
+    void OnDisable()
+    {
+        isReady = false;
+        StopAllCoroutines();
+        if (navMeshAgent != null)
+            navMeshAgent.enabled = false;
+    }
+
+    void Update()
+    {
+        if (!isReady || isWaiting || hasArrived) return;
+        if (navMeshAgent == null || !navMeshAgent.enabled) return;
+
+        SetMode(navMeshAgent.velocity.magnitude > 0.1f ? 1 : 0);
+
+        if (navMeshAgent.pathPending) return;
+        if (navMeshAgent.remainingDistance <= arrivalDistance)
+            OnReachedTarget();
+    }
+
+    void StartNavigation()
+    {
+        if (mode == CrowdMode.Transit)
+        {
+            if (waypoints == null || waypoints.Length == 0)
+            {
+                Debug.LogError($"[Crowd] {name} : waypoints vides !");
+                return;
+            }
+            GoToRandomWaypoint();
+        }
+        else
+        {
+            if (destination == null)
+            {
+                Debug.LogError($"[Crowd] {name} : destination nulle !");
+                return;
+            }
+            navMeshAgent.SetDestination(destination.position);
+        }
+    }
+
+    void OnReachedTarget()
+    {
+        if (mode == CrowdMode.Transit)
+            StartCoroutine(WaitThenMove());
+        else
+        {
+            hasArrived = true;
+            SetMode(0);
+            StartCoroutine(DespawnAfterDelay(0.3f));
+        }
+    }
+
     IEnumerator WaitThenMove()
     {
         isWaiting = true;
-        SetAnimationMode(0); // Idle pendant l'attente
-
-        float wait = Random.Range(waitTimeMin, waitTimeMax);
-        yield return new WaitForSeconds(wait);
-
+        SetMode(0);
+        yield return new WaitForSeconds(Random.Range(waitTimeMin, waitTimeMax));
         GoToRandomWaypoint();
         isWaiting = false;
     }
 
-    // -------------------------------------------------------
-    /// <summary>
-    /// Choisit un waypoint aléatoire DIFFÉRENT du waypoint courant et s'y rend.
-    /// </summary>
     void GoToRandomWaypoint()
     {
-        if (waypoints == null || waypoints.Length == 0)
-        {
-            RefreshWaypointsFromTag();
-            if (waypoints == null || waypoints.Length == 0) return;
-        }
-
         Transform next = currentTarget;
-
-        // On essaie de ne pas retourner immédiatement au même endroit
-        int maxAttempts = 10;
-        while (next == currentTarget && maxAttempts-- > 0)
+        int attempts = 10;
+        while (next == currentTarget && attempts-- > 0)
             next = waypoints[Random.Range(0, waypoints.Length)];
 
         currentTarget = next;
         navMeshAgent.SetDestination(currentTarget.position);
-        SetAnimationMode(1); // Walk
+        SetMode(1);
     }
 
-    // -------------------------------------------------------
-    /// <summary>
-    /// Remplit le tableau waypoints à partir des GameObjects taggés "Target".
-    /// AUCUN tag n'est modifié — tous les PNJ voient toujours tous les waypoints.
-    /// </summary>
-    void RefreshWaypointsFromTag()
+    IEnumerator DespawnAfterDelay(float delay)
     {
-        GameObject[] tagged = GameObject.FindGameObjectsWithTag("Target");
-        waypoints = new Transform[tagged.Length];
-        for (int i = 0; i < tagged.Length; i++)
-            waypoints[i] = tagged[i].transform;
+        yield return new WaitForSeconds(delay);
+        if (spawner != null) spawner.ReturnToPool(gameObject);
+        else gameObject.SetActive(false);
     }
 
-    // -------------------------------------------------------
-    void SetAnimationMode(int mode)
+    void SetMode(int m)
     {
         if (animator != null)
-            animator.SetInteger("Mode", mode);
+            animator.SetInteger("Mode", m);
     }
 }
