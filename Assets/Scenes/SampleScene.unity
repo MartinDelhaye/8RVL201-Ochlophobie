@@ -125892,6 +125892,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1030996427, guid: abc00000000017047335828662684582, type: 3}
   m_PrefabInstance: {fileID: 998816757}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &999100001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999100002}
+  - component: {fileID: 999100003}
+  m_Layer: 0
+  m_Name: IntroPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999100002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999100001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999100003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999100001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5720bee40d3f94b58ad4836eeef0c867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFromPlayer: 2
+  displayDuration: 8
+  fadeDuration: 1.5
+  message: "Bienvenue \xE0 la gare de S\xE9oul.\n\nVotre objectif :\nRejoignez votre
+    quai\net montez dans votre train."
 --- !u!1 &999692726
 GameObject:
   m_ObjectHideFlags: 0
@@ -126356,7 +126405,7 @@ Transform:
   m_GameObject: {fileID: 1000703799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.197, z: 0.556}
+  m_LocalPosition: {x: 0, y: 3.197, z: -6.521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -268721,6 +268770,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 999100002}
   - {fileID: 410087041}
   - {fileID: 1300524885}
   - {fileID: 1000703802}
