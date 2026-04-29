@@ -6,12 +6,7 @@
       "mcp__unity-mcp__Unity_SceneView_Capture2DScene",
       "mcp__unity-mcp__Unity_SceneView_CaptureMultiAngleSceneView",
       "mcp__unity-mcp__Unity_Camera_Capture",
-      "Bash(python -c ' *)",
-      "Bash(grep -v \"^\\\\s*$\\\\|MI_Decal\\\\|Target\\\\|Son\\\\|  m_Name: $\")",
-      "Bash(awk -F: '{print $1\": \"$3}')",
-      "Bash(grep -v \"^ *$\")",
-      "Bash(git *)",
-      "Bash(python3 *)"
+      "Bash(python -c ' *)"
     ]
   }
 }
