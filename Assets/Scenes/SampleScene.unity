@@ -83888,6 +83888,9 @@ MonoBehaviour:
   openAngle: -90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1001 &719831428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87333,8 +87336,8 @@ MonoBehaviour:
   - {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
   - {fileID: 5127665253469060, guid: 04dadcfb8f3a78347aff46020e1aae74, type: 3}
   - {fileID: 1352303529906801858, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
-  poolSize: 15
-  maxActive: 10
+  poolSize: 150
+  maxActive: 100
   npcScale: 0.7
   spawnPoints:
   - {fileID: 1797688218}
@@ -96158,6 +96161,9 @@ MonoBehaviour:
   openAngle: -90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1001 &814732562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117162,6 +117168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Ochlophobia.UI::Ochlophobia.UI.IntroPanel
   distanceFromCamera: 2
   heightOffset: -0.1
+  displayDuration: 9
+  fadeDuration: 2
 --- !u!1 &999692726
 GameObject:
   m_ObjectHideFlags: 0
@@ -142478,6 +142486,9 @@ MonoBehaviour:
   openAngle: 90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1 &1222416338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030991974, guid: abc00000000000912117128670216154, type: 3}
@@ -189231,6 +189242,9 @@ MonoBehaviour:
   openAngle: 90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1 &1633593100 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030992407, guid: abc00000000010098355197248504773, type: 3}
@@ -209266,6 +209280,9 @@ MonoBehaviour:
   openAngle: 90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1 &1810215190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030989319, guid: abc00000000003209250658930817912, type: 3}
@@ -241532,6 +241549,9 @@ MonoBehaviour:
   openAngle: -90
   speed: 4
   closeDelay: 1.5
+  addColliderIfMissing: 1
+  colliderSize: {x: 1, y: 2.4, z: 0.08}
+  colliderCenter: {x: 0.5, y: 1.2, z: 0}
 --- !u!1 &2068984629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030989853, guid: abc00000000009961350969752159793, type: 3}

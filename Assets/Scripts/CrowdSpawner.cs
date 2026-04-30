@@ -10,8 +10,8 @@ public class CrowdSpawner : MonoBehaviour
     public GameObject[] npcPrefabs;
 
     [Header("Pool")]
-    public int   poolSize  = 15;
-    public int   maxActive = 150;
+    public int   poolSize  = 150;
+    public int   maxActive = 100;
     [Tooltip("Scale uniforme appliquée à chaque PNJ")]
     public float npcScale  = 0.7f;
 

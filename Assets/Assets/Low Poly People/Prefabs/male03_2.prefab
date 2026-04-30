@@ -77,7 +77,7 @@ MonoBehaviour:
   waitTimeMin: 0.5
   waitTimeMax: 2
   arrivalDistance: 0.8
-  moveSpeed: 1.4
+  moveSpeed: 3
   spawner: {fileID: 0}
 --- !u!195 &-4462552380307237203
 NavMeshAgent:
