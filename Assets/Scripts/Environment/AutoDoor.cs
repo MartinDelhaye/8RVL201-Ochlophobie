@@ -2,49 +2,50 @@ using UnityEngine;
 
 namespace Ochlophobia.Environment
 {
-    /// Automatic door that swings open when the player gets close, then closes after a delay.
-    /// Attach to the door pivot GameObject. Works by rotating the door around its local Y axis.
+    /// Porte commandée uniquement par DoorButton.OpenDoor().
+    /// Attacher sur le pivot de la porte (l'axe de rotation).
+    /// Ajoute automatiquement un BoxCollider si la porte n'en a pas,
+    /// ce qui empêche le joueur de traverser quand elle est fermée.
     public class AutoDoor : MonoBehaviour
     {
-        [SerializeField] private Transform player;
-        [SerializeField] private float triggerDistance = 2.5f;
-        [SerializeField] private float openAngle = 90f;
-        [SerializeField] private float speed = 3f;
-        [SerializeField] private float closeDelay = 1.5f;
+        [SerializeField] private float openAngle  = 90f;
+        [SerializeField] private float speed      = 3f;
+        [SerializeField] private float closeDelay = 3f;
+
+        [Header("Collider de blocage")]
+        [Tooltip("Ajoute un BoxCollider si aucun n'est présent sur ce GO")]
+        [SerializeField] private bool  addColliderIfMissing = true;
+        [Tooltip("Taille du collider en espace local (largeur, hauteur, épaisseur)")]
+        [SerializeField] private Vector3 colliderSize   = new Vector3(1.0f, 2.4f, 0.08f);
+        [Tooltip("Décalage du centre par rapport au pivot")]
+        [SerializeField] private Vector3 colliderCenter = new Vector3(0.5f, 1.2f, 0f);
 
         private float _closedAngle;
         private float _targetAngle;
         private float _currentAngle;
         private float _closeTimer;
-        private bool _isOpen;
+        private bool  _isOpen;
+
+        private void Awake()
+        {
+            if (addColliderIfMissing && GetComponent<Collider>() == null)
+            {
+                var box    = gameObject.AddComponent<BoxCollider>();
+                box.size   = colliderSize;
+                box.center = colliderCenter;
+            }
+        }
 
         private void Start()
         {
-            _closedAngle = transform.localEulerAngles.y;
-            _targetAngle = _closedAngle;
+            _closedAngle  = transform.localEulerAngles.y;
+            _targetAngle  = _closedAngle;
             _currentAngle = _closedAngle;
-
-            if (player == null)
-            {
-                var xrOrigin = FindObjectOfType<Unity.XR.CoreUtils.XROrigin>();
-                if (xrOrigin != null) player = xrOrigin.transform;
-            }
         }
 
         private void Update()
         {
-            if (player == null) return;
-
-            float dist = Vector3.Distance(transform.position, player.position);
-            bool playerNear = dist <= triggerDistance;
-
-            if (playerNear)
-            {
-                _targetAngle = _closedAngle + openAngle;
-                _closeTimer = closeDelay;
-                _isOpen = true;
-            }
-            else if (_isOpen)
+            if (_isOpen)
             {
                 _closeTimer -= Time.deltaTime;
                 if (_closeTimer <= 0f)
@@ -59,6 +60,13 @@ namespace Ochlophobia.Environment
             var euler = transform.localEulerAngles;
             euler.y = _currentAngle;
             transform.localEulerAngles = euler;
+        }
+
+        public void OpenDoor()
+        {
+            _targetAngle = _closedAngle + openAngle;
+            _closeTimer  = closeDelay;
+            _isOpen      = true;
         }
     }
 }
