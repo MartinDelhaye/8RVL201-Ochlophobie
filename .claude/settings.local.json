@@ -6,7 +6,11 @@
       "mcp__unity-mcp__Unity_SceneView_Capture2DScene",
       "mcp__unity-mcp__Unity_SceneView_CaptureMultiAngleSceneView",
       "mcp__unity-mcp__Unity_Camera_Capture",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "WebFetch(domain:docs.google.com)",
+      "Bash(awk *)",
+      "Bash(python3 *)",
+      "Bash(grep -v \"Target\\\\|Decal\\\\|MI_\\\\|^$\")"
     ]
   }
 }

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 namespace Ochlophobia.UI
 {
     /// Panneau d'introduction world-space affiché devant le joueur au lancement.
-    /// Se tourne en permanence vers la caméra (billboard), puis disparaît en fondu.
+    /// Grabbable : le joueur peut le saisir et le déplacer librement.
+    /// Billboard désactivé pendant le grab. Fondu + destruction si jamais lâché.
     public class IntroPanel : MonoBehaviour
     {
         [SerializeField] private float distanceFromPlayer = 2.5f;
@@ -19,6 +20,7 @@ namespace Ochlophobia.UI
 
         private CanvasGroup _canvasGroup;
         private Transform   _cam;
+        private bool        _grabbed = false;
 
         private void Start()
         {
@@ -33,12 +35,13 @@ namespace Ochlophobia.UI
             transform.rotation = Quaternion.LookRotation(forward);
 
             BuildUI();
+            SetupGrab();
             StartCoroutine(FadeOutRoutine());
         }
 
         private void Update()
         {
-            if (_cam == null) return;
+            if (_cam == null || _grabbed) return;
 
             // Billboard : tourne vers la caméra (axe Y uniquement)
             Vector3 dir = transform.position - _cam.position;
@@ -46,6 +49,48 @@ namespace Ochlophobia.UI
             if (dir.sqrMagnitude > 0.001f)
                 transform.rotation = Quaternion.LookRotation(dir);
         }
+
+        // ── Grab physique ─────────────────────────────────────────────────────
+
+        private void SetupGrab()
+        {
+            var rb = gameObject.AddComponent<Rigidbody>();
+            rb.useGravity    = false;
+            rb.isKinematic   = false;
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+            // Le canvas fait 80×50 unités à scale 0.01 → 0.8×0.5 m physique
+            var col    = gameObject.AddComponent<BoxCollider>();
+            col.size   = new Vector3(80f, 50f, 2f);
+            col.center = Vector3.zero;
+
+            var grab = gameObject.AddComponent<
+                UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+            grab.movementType     = UnityEngine.XR.Interaction.Toolkit.Interactables
+                                        .XRBaseInteractable.MovementType.VelocityTracking;
+            grab.throwOnDetach    = false;
+            grab.useDynamicAttach = true;
+            grab.trackRotation    = true;
+
+            grab.selectEntered.AddListener(_ => OnGrabbed());
+            grab.selectExited.AddListener(_  => OnReleased());
+        }
+
+        private void OnGrabbed()
+        {
+            _grabbed = true;
+            StopAllCoroutines();             // annule le fondu automatique
+            if (_canvasGroup != null)
+                _canvasGroup.alpha = 1f;    // s'assure que le panneau est visible
+        }
+
+        private void OnReleased()
+        {
+            _grabbed = false;
+            StartCoroutine(FadeOutRoutine()); // relance le compte à rebours
+        }
+
+        // ── Construction UI ───────────────────────────────────────────────────
 
         private void BuildUI()
         {
@@ -66,19 +111,16 @@ namespace Ochlophobia.UI
             rt.sizeDelta  = new Vector2(80f, 50f);
             rt.localScale = Vector3.one * 0.01f;
 
-            // Fond principal
             MakeImage("BG", transform,
                 Vector2.zero, Vector2.one,
                 Vector2.zero, Vector2.zero,
                 BackgroundColor);
 
-            // Barre dorée gauche
             MakeImage("AccentBar", transform,
                 new Vector2(0f, 0f), new Vector2(0f, 1f),
                 new Vector2(0f, 0f), new Vector2(5f, 0f),
                 GoldColor);
 
-            // Titre  — zone : 76 % → 95 %
             var title = MakeTMP("Title", transform,
                 new Vector2(0.1f, 0.76f), new Vector2(0.95f, 0.96f));
             title.text      = "GARE DE SÉOUL";
@@ -87,7 +129,6 @@ namespace Ochlophobia.UI
             title.color     = GoldColor;
             title.alignment = TextAlignmentOptions.Left;
 
-            // Sous-titre — zone : 63 % → 76 %
             var sub = MakeTMP("Subtitle", transform,
                 new Vector2(0.1f, 0.63f), new Vector2(0.95f, 0.76f));
             sub.text      = "Bienvenue dans la gare";
@@ -95,13 +136,11 @@ namespace Ochlophobia.UI
             sub.color     = DimWhite;
             sub.alignment = TextAlignmentOptions.Left;
 
-            // Séparateur — à 61 %
             MakeImage("Divider", transform,
                 new Vector2(0.1f, 0.60f), new Vector2(0.9f, 0.60f),
                 new Vector2(0f, -0.5f), new Vector2(0f, 0.5f),
                 new Color(1f, 1f, 1f, 0.2f));
 
-            // Label objectif — zone : 48 % → 60 %
             var objLabel = MakeTMP("ObjLabel", transform,
                 new Vector2(0.1f, 0.48f), new Vector2(0.95f, 0.60f));
             objLabel.text             = "VOTRE OBJECTIF";
@@ -111,7 +150,6 @@ namespace Ochlophobia.UI
             objLabel.alignment        = TextAlignmentOptions.Left;
             objLabel.characterSpacing = 2f;
 
-            // Corps — zone : 08 % → 46 %
             var body = MakeTMP("Body", transform,
                 new Vector2(0.1f, 0.08f), new Vector2(0.95f, 0.46f));
             body.text               = "Rejoignez votre quai\net montez dans votre train.";
@@ -153,6 +191,8 @@ namespace Ochlophobia.UI
             return tmp;
         }
 
+        // ── Fondu + destruction ───────────────────────────────────────────────
+
         private IEnumerator FadeOutRoutine()
         {
             yield return new WaitForSeconds(displayDuration);
@@ -160,7 +200,8 @@ namespace Ochlophobia.UI
             float elapsed = 0f;
             while (elapsed < fadeDuration)
             {
-                _canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+                if (_canvasGroup != null)
+                    _canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
                 elapsed += Time.deltaTime;
                 yield return null;
             }

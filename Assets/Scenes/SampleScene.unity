@@ -2855,6 +2855,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 26574115}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -3264,6 +3266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 27670985}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -14404,6 +14408,486 @@ MonoBehaviour:
   m_FadeFactor: 1
   version: 1
   m_DecalLayerMask: 1
+--- !u!1 &111200001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200002}
+  - component: {fileID: 111200003}
+  - component: {fileID: 111200004}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.502, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1221677523}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1 &111200005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200006}
+  - component: {fileID: 111200007}
+  - component: {fileID: 111200008}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200005}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.547, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 2068959315}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1 &111200009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200010}
+  - component: {fileID: 111200011}
+  - component: {fileID: 111200012}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200009}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.029, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1632368970}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1 &111200013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200014}
+  - component: {fileID: 111200015}
+  - component: {fileID: 111200016}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200013}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.071, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 814350454}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1 &111200017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200018}
+  - component: {fileID: 111200019}
+  - component: {fileID: 111200020}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200017}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.536, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200017}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1810073782}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1 &111200021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111200022}
+  - component: {fileID: 111200023}
+  - component: {fileID: 111200024}
+  m_Layer: 0
+  m_Name: DoorButton_DOOR4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111200022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200021}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.369, y: 0.20458007, z: -0.53813004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265009300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111200023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &111200024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e87f4d89b7a44fc8919e97c2e6f1bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 719721919}
+  cooldown: 2
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.1, g: 1, b: 0.3, a: 1}
+--- !u!1001 &111200025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234426153128639021, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1460544253447542311, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 111200028}
+  m_SourcePrefab: {fileID: 100100000, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+--- !u!1 &111200026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1460544253447542311, guid: e3025ab6e2ffaf94e81a518c9cd4272f, type: 3}
+  m_PrefabInstance: {fileID: 111200025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &111200028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111200026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc34d6ffcd1b74587bff8c80f3513a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderSize: {x: 0.52, y: 0.32, z: 0.22}
+  colliderCenter: {x: 0, y: 0.16, z: 0}
+  mass: 2
 --- !u!1001 &111865699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17115,6 +17599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 135881895}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -18739,6 +19225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 152082510}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -19137,6 +19625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 155029172}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -27430,6 +27920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 221043968}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -32276,6 +32768,43 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: abc00000000008653929025388503436, type: 3}
+--- !u!1 &265009299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265009300}
+  m_Layer: 0
+  m_Name: BoutonsPortes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &265009300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265009299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.26085, y: 3.79542, z: -2.96187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 111200002}
+  - {fileID: 111200006}
+  - {fileID: 111200010}
+  - {fileID: 111200014}
+  - {fileID: 111200018}
+  - {fileID: 111200022}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266732866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030983414, guid: abc00000000016917433121447599133, type: 3}
@@ -37179,6 +37708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 304451723}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -43877,6 +44408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 353695926}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -47753,6 +48286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 382561163}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -49231,6 +49766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 395310912}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -49485,6 +50022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 397189571}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -54957,6 +55496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 447067465}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -55391,6 +55932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 450233518}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -60252,6 +60795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 491467067}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -61518,6 +62063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 501755815}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -64474,6 +65021,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 519308948}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -79842,6 +80391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 646647014}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -80831,6 +81382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 652345571}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -81275,6 +81828,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 653761984}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -83702,6 +84257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 669060628}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -87903,6 +88460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 700624009}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -89836,8 +90395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: -90
   speed: 4
   closeDelay: 1.5
@@ -90335,6 +90892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 724011497}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -90780,6 +91339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 726614889}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -94397,6 +94958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 752207287}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -96511,6 +97074,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 765126728}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -102835,8 +103400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: -90
   speed: 4
   closeDelay: 1.5
@@ -103511,6 +104074,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 819259423}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -104413,6 +104978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 824814404}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -105607,6 +106174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 830274323}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -107863,6 +108432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 851968763}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -111385,6 +111956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 882251245}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -112678,6 +113251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 891627353}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -114812,6 +115387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 909080938}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -120318,6 +120895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 951130815}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -125091,6 +125670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 993197978}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -125939,8 +126520,6 @@ MonoBehaviour:
   distanceFromPlayer: 2
   displayDuration: 8
   fadeDuration: 1.5
-  message: "Bienvenue \xE0 la gare de S\xE9oul.\n\nVotre objectif :\nRejoignez votre
-    quai\net montez dans votre train."
 --- !u!1 &999692726
 GameObject:
   m_ObjectHideFlags: 0
@@ -126090,6 +126669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1000278560}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -132094,6 +132675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1047917045}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -132859,6 +133442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1055098063}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -133924,6 +134509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1061541359}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -134894,6 +135481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1065114827}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -138294,6 +138883,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1094257460}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -141759,6 +142350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1125211934}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -150251,6 +150844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1198862998}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -153076,6 +153671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1220344702}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -153233,8 +153830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: 90
   speed: 4
   closeDelay: 1.5
@@ -153986,6 +154581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1227550356}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -157890,6 +158487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1258955963}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -161073,6 +161672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1295420230}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -163904,6 +164505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1316699726}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -171063,6 +171666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1379904592}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -174983,6 +175588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1411197006}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -176122,6 +176729,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1417359157}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -185256,6 +185865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1495025803}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -185685,6 +186296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1497827914}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -190796,6 +191409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1537436252}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -194932,6 +195547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1570731918}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -203463,6 +204080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1631985729}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -203646,8 +204265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: 90
   speed: 4
   closeDelay: 1.5
@@ -208781,6 +209398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1676283828}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -210315,6 +210934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1691064611}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -210723,6 +211344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1693791323}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -212844,6 +213467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1710506219}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -215812,6 +216437,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1730062797}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -218164,6 +218791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1745564801}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -220898,6 +221527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1769340210}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -221084,6 +221715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1769846245}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -222917,6 +223550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1785599254}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -223847,6 +224482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1790626186}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -225658,8 +226295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: 90
   speed: 4
   closeDelay: 1.5
@@ -226366,6 +227001,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1813864201}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -228116,6 +228753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1830172207}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -229002,6 +229641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1834935195}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -230285,6 +230926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1845161691}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -236819,6 +237462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1879402910}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -243694,6 +244339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1933965584}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -250494,6 +251141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1989039602}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -251102,6 +251751,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 1994303245}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -258601,6 +259252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 2059736191}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -259894,8 +260547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fad5b7f345ffd4ca4430b1f39453ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ochlophobia.Environment.AutoDoor
-  player: {fileID: 0}
-  triggerDistance: 3
   openAngle: -90
   speed: 4
   closeDelay: 1.5
@@ -261097,6 +261748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 2080616396}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -262505,6 +263158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 2092236559}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -262890,6 +263545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crowd
   navMeshAgent: {fileID: 2093741545}
+  useRandomWander: 1
+  wanderRadius: 12
   waypoints: []
   waitTimeMin: 0.5
   waitTimeMax: 2.5
@@ -268766,11 +269423,66 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1487860486}
   m_SourcePrefab: {fileID: 100100000, guid: 000501d56774c4abb9dad3d3ed1c8f2c, type: 3}
+--- !u!1 &111300001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111300002}
+  - component: {fileID: 111300003}
+  m_Layer: 0
+  m_Name: SafetyFloor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111300002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111300001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.95, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &111300003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111300001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 0.1, z: 60}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 999100002}
+  - {fileID: 111300002}
+  - {fileID: 111200025}
   - {fileID: 410087041}
   - {fileID: 1300524885}
   - {fileID: 1000703802}
@@ -268781,3 +269493,4 @@ SceneRoots:
   - {fileID: 674519342}
   - {fileID: 60825368}
   - {fileID: 421431676}
+  - {fileID: 265009300}
