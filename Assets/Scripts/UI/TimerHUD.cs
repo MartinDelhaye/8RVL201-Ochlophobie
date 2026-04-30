@@ -35,7 +35,7 @@ namespace Ochlophobia.UI
         private void PositionInFrontOfPlayer()
         {
             Transform cam = null;
-            var xrOrigin = FindObjectOfType<XROrigin>();
+            var xrOrigin = FindFirstObjectByType<XROrigin>();
             if (xrOrigin != null)
                 cam = xrOrigin.Camera.transform;
             else if (Camera.main != null)

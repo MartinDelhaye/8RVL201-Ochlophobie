@@ -43,7 +43,7 @@ public static class OchlophobiaSetup
 
     static void SetupGameManager()
     {
-        if (Object.FindObjectOfType<GameManager>() != null) return;
+        if (Object.FindFirstObjectByType<GameManager>() != null) return;
 
         var go = new GameObject("GameManager");
         Undo.RegisterCreatedObjectUndo(go, "Create GameManager");
@@ -246,7 +246,9 @@ public static class OchlophobiaSetup
         int skipped = 0;
 
         // Cherche tous les MeshRenderer dans la scène (y compris inactifs)
+#pragma warning disable CS0618
         var renderers = Object.FindObjectsOfType<MeshRenderer>(true);
+#pragma warning restore CS0618
 
         foreach (var mr in renderers)
         {

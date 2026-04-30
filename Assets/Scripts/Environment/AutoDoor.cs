@@ -1,17 +1,24 @@
 using UnityEngine;
-using UnityEngine.AI;
-using Unity.XR.CoreUtils;
 
 namespace Ochlophobia.Environment
 {
-    /// Porte automatique qui s'ouvre quand le joueur ou un PNJ s'approche.
-    /// Attache ce script sur le pivot de la porte (l'axe de rotation).
+    /// Porte commandée uniquement par DoorButton.OpenDoor().
+    /// Attacher sur le pivot de la porte (l'axe de rotation).
+    /// Ajoute automatiquement un BoxCollider si la porte n'en a pas,
+    /// ce qui empêche le joueur de traverser quand elle est fermée.
     public class AutoDoor : MonoBehaviour
     {
-        [SerializeField] private float triggerDistance = 2.5f;
-        [SerializeField] private float openAngle      = 90f;
-        [SerializeField] private float speed          = 3f;
-        [SerializeField] private float closeDelay     = 1.5f;
+        [SerializeField] private float openAngle  = 90f;
+        [SerializeField] private float speed      = 3f;
+        [SerializeField] private float closeDelay = 3f;
+
+        [Header("Collider de blocage")]
+        [Tooltip("Ajoute un BoxCollider si aucun n'est présent sur ce GO")]
+        [SerializeField] private bool  addColliderIfMissing = true;
+        [Tooltip("Taille du collider en espace local (largeur, hauteur, épaisseur)")]
+        [SerializeField] private Vector3 colliderSize   = new Vector3(1.0f, 2.4f, 0.08f);
+        [Tooltip("Décalage du centre par rapport au pivot")]
+        [SerializeField] private Vector3 colliderCenter = new Vector3(0.5f, 1.2f, 0f);
 
         private float _closedAngle;
         private float _targetAngle;
@@ -19,39 +26,26 @@ namespace Ochlophobia.Environment
         private float _closeTimer;
         private bool  _isOpen;
 
-        private Transform _player;
-
-        // Cache partagé entre toutes les portes pour éviter FindObjectsOfType chaque frame
-        private static NavMeshAgent[] _agentCache;
-        private static float          _cacheTimestamp;
-        private const  float          CacheInterval = 3f;
+        private void Awake()
+        {
+            if (addColliderIfMissing && GetComponent<Collider>() == null)
+            {
+                var box    = gameObject.AddComponent<BoxCollider>();
+                box.size   = colliderSize;
+                box.center = colliderCenter;
+            }
+        }
 
         private void Start()
         {
             _closedAngle  = transform.localEulerAngles.y;
             _targetAngle  = _closedAngle;
             _currentAngle = _closedAngle;
-
-            // Cherche le joueur par tag puis par XROrigin en fallback
-            var playerGO = GameObject.FindWithTag("Player");
-            if (playerGO != null)
-                _player = playerGO.transform;
-            else
-            {
-                var origin = FindObjectOfType<XROrigin>();
-                if (origin != null) _player = origin.transform;
-            }
         }
 
         private void Update()
         {
-            if (IsAnythingNear())
-            {
-                _targetAngle = _closedAngle + openAngle;
-                _closeTimer  = closeDelay;
-                _isOpen      = true;
-            }
-            else if (_isOpen)
+            if (_isOpen)
             {
                 _closeTimer -= Time.deltaTime;
                 if (_closeTimer <= 0f)
@@ -68,31 +62,11 @@ namespace Ochlophobia.Environment
             transform.localEulerAngles = euler;
         }
 
-        private bool IsAnythingNear()
+        public void OpenDoor()
         {
-            // Joueur
-            if (_player != null &&
-                Vector3.Distance(transform.position, _player.position) <= triggerDistance)
-                return true;
-
-            // PNJ : raffraîchissement du cache toutes les CacheInterval secondes
-            if (Time.time - _cacheTimestamp > CacheInterval)
-            {
-                _agentCache     = FindObjectsOfType<NavMeshAgent>();
-                _cacheTimestamp = Time.time;
-            }
-
-            if (_agentCache != null)
-            {
-                foreach (var agent in _agentCache)
-                {
-                    if (agent != null &&
-                        Vector3.Distance(transform.position, agent.transform.position) <= triggerDistance)
-                        return true;
-                }
-            }
-
-            return false;
+            _targetAngle = _closedAngle + openAngle;
+            _closeTimer  = closeDelay;
+            _isOpen      = true;
         }
     }
 }
