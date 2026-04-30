@@ -4,14 +4,13 @@ using Unity.XR.CoreUtils;
 
 namespace Ochlophobia.Environment
 {
-    /// Porte automatique qui s'ouvre quand le joueur ou un PNJ s'approche.
-    /// Attache ce script sur le pivot de la porte (l'axe de rotation).
+
+    /// Porte pivotante contrôlée par un bouton (DoorButton).
+    /// Attach to the door pivot GameObject.
     public class AutoDoor : MonoBehaviour
     {
-        [SerializeField] private float triggerDistance = 2.5f;
-        [SerializeField] private float openAngle      = 90f;
-        [SerializeField] private float speed          = 3f;
-        [SerializeField] private float closeDelay     = 1.5f;
+        [SerializeField] private float openAngle  = 90f;
+        [SerializeField] private float speed      = 3f;
 
         private float _closedAngle;
         private float _targetAngle;
@@ -19,39 +18,26 @@ namespace Ochlophobia.Environment
         private float _closeTimer;
         private bool  _isOpen;
 
-        private Transform _player;
-
-        // Cache partagé entre toutes les portes pour éviter FindObjectsOfType chaque frame
-        private static NavMeshAgent[] _agentCache;
-        private static float          _cacheTimestamp;
-        private const  float          CacheInterval = 3f;
-
         private void Start()
         {
             _closedAngle  = transform.localEulerAngles.y;
             _targetAngle  = _closedAngle;
             _currentAngle = _closedAngle;
+        }
 
-            // Cherche le joueur par tag puis par XROrigin en fallback
-            var playerGO = GameObject.FindWithTag("Player");
-            if (playerGO != null)
-                _player = playerGO.transform;
-            else
-            {
-                var origin = FindObjectOfType<XROrigin>();
-                if (origin != null) _player = origin.transform;
-            }
+        /// Appelé par DoorButton quand le joueur appuie.
+        public void OpenDoor()
+        {
+            _targetAngle = _closedAngle + openAngle;
+            _closeTimer  = closeDelay;
+            _isOpen      = true;
+
         }
 
         private void Update()
         {
-            if (IsAnythingNear())
-            {
-                _targetAngle = _closedAngle + openAngle;
-                _closeTimer  = closeDelay;
-                _isOpen      = true;
-            }
-            else if (_isOpen)
+
+            if (_isOpen)
             {
                 _closeTimer -= Time.deltaTime;
                 if (_closeTimer <= 0f)
