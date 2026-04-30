@@ -7,11 +7,11 @@
       "mcp__unity-mcp__Unity_SceneView_CaptureMultiAngleSceneView",
       "mcp__unity-mcp__Unity_Camera_Capture",
       "Bash(python -c ' *)",
-
-      "WebFetch(domain:docs.google.com)",
-      "Bash(awk *)",
-      "Bash(python3 *)",
-      "Bash(grep -v \"Target\\\\|Decal\\\\|MI_\\\\|^$\")"
+      "Bash(grep -v \"^\\\\s*$\\\\|MI_Decal\\\\|Target\\\\|Son\\\\|  m_Name: $\")",
+      "Bash(awk -F: '{print $1\": \"$3}')",
+      "Bash(grep -v \"^ *$\")",
+      "Bash(git *)",
+      "Bash(python3 *)"
     ]
   }
 }
