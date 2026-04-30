@@ -4,47 +4,40 @@ using Unity.XR.CoreUtils;
 
 namespace Ochlophobia.Environment
 {
+
     /// Porte pivotante contrôlée par un bouton (DoorButton).
     /// Attach to the door pivot GameObject.
     public class AutoDoor : MonoBehaviour
     {
         [SerializeField] private float openAngle  = 90f;
         [SerializeField] private float speed      = 3f;
-        [SerializeField] private float closeDelay = 3f;
 
         private float _closedAngle;
         private float _targetAngle;
         private float _currentAngle;
         private float _closeTimer;
-        private bool   _isOpen;
+        private bool  _isOpen;
 
         private void Start()
         {
-            _closedAngle   = transform.localEulerAngles.y;
-            _targetAngle   = _closedAngle;
+            _closedAngle  = transform.localEulerAngles.y;
+            _targetAngle  = _closedAngle;
             _currentAngle = _closedAngle;
+        }
 
-            if (player == null)
-            {
-                var xrOrigin = FindObjectOfType<Unity.XR.CoreUtils.XROrigin>();
-                if (xrOrigin != null) player = xrOrigin.transform;
-            }
+        /// Appelé par DoorButton quand le joueur appuie.
+        public void OpenDoor()
+        {
+            _targetAngle = _closedAngle + openAngle;
+            _closeTimer  = closeDelay;
+            _isOpen      = true;
+
         }
 
         private void Update()
         {
-            if (player == null) return;
 
-            float dist = Vector3.Distance(transform.position, player.position);
-            bool playerNear = dist <= triggerDistance;
-
-            if (playerNear)
-            {
-                _targetAngle = _closedAngle + openAngle;
-                _closeTimer = closeDelay;
-                _isOpen = true;
-            }
-            else if (_isOpen)
+            if (_isOpen)
             {
                 _closeTimer -= Time.deltaTime;
                 if (_closeTimer <= 0f)
